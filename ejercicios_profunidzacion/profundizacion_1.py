@@ -71,6 +71,42 @@ import random
 # --------------------------------
 # Dentro de esta sección copiar y crear
 # todas las funciones que utilice
+def resultado_tirada (cantidad_dados):
+    resultado_tirada = []
+    if cantidad_dados == 1:
+        numero_1 = random.randrange(1, 6+1)
+        resultado_tirada.append(numero_1)
+
+    if cantidad_dados == 2:
+        numero_1 = random.randrange(1, 6+1)
+        numero_2 = random.randrange(1, 6+1)
+        resultado_tirada.append([numero_1, numero_2])
+        
+    if cantidad_dados == 3:
+        numero_1 = random.randrange(1, 6+1)
+        numero_2 = random.randrange(1, 6+1)
+        numero_3 = random.randrange(1, 6+1)
+        resultado_tirada.append([numero_1, numero_2, numero_3])
+    
+    if cantidad_dados == 4:
+        numero_1 = random.randrange(1, 6+1)
+        numero_2 = random.randrange(1, 6+1)
+        numero_3 = random.randrange(1, 6+1)
+        numero_4 = random.randrange(1, 6+1)
+        resultado_tirada.append([numero_1, numero_2, numero_3, numero_4])
+
+    if cantidad_dados == 5:
+        numero_1 = random.randrange(1, 6+1)
+        numero_2 = random.randrange(1, 6+1)
+        numero_3 = random.randrange(1, 6+1)
+        numero_4 = random.randrange(1, 6+1)
+        numero_5 = random.randrange(1, 6+1)
+        resultado_tirada.append([numero_1, numero_2, numero_3, numero_4, numero_5])
+    
+    return resultado_tirada
+
+
+
 
 
 # --------------------------------
@@ -80,3 +116,22 @@ if __name__ == '__main__':
     # A partir de aquí escriba el código que
     # invoca al as funciones y resuelve el enunciado
     # Leer el enunciado con atención y consultar cualquier duda
+
+
+    dados_guardados = []
+    cantidad_dados = 5
+    tiradas = [None]
+
+    while len(dados_guardados) < 5:
+
+        for tirada in tiradas:
+            tirada = resultado_tirada(cantidad_dados)
+        
+            print('resultado de la tirada:', tirada)
+
+        max_repeticiones = max(tirada, key = tirada.count)
+        
+        print('el número más repetido de la tirada es "{}"'.format(max_repeticiones))
+
+
+

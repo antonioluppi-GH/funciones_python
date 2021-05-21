@@ -12,8 +12,16 @@ import random
 
 # --------------------------------
 # Aquí dentro definir la función lista_aleatoria
-
-
+def lista_aleatoria (inicio, fin, cantidad):
+    lista_aleatoria = []
+    while cantidad > 0:
+        numero = random.randrange(inicio, fin+1)
+        lista_aleatoria.append(numero)
+        cantidad = cantidad - 1
+        
+    
+    return lista_aleatoria
+    
 # --------------------------------
 
 
@@ -56,9 +64,14 @@ if __name__ == '__main__':
 
     # mi_lista_aleatoria = lista_aleatoria(inicio, fin, cantidad)
 
+    mi_lista_aleatoria = lista_aleatoria(inicio, fin, cantidad)
+
     # Imprimir en pantalla "mi_lista_aleatoria" que tendrá
     # los valores retornado por la función lista_aleatoria:
 
     # print(mi_lista_aleatoria)
+
+    print(mi_lista_aleatoria)
+
 
     print("terminamos")

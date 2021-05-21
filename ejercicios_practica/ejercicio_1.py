@@ -14,6 +14,9 @@ def imprimir_mayor(numero_1, numero_2):
     # En esta función debe determinar cual de los dos
     # números ingresados por parámetro es mayor
     # y luego imprimir dicho valor en pantalla
+    mayor = max(numero_1,numero_2)
+    print(mayor)
+
 
 
 if __name__ == '__main__':
