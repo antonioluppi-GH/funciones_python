@@ -66,47 +66,26 @@ Si salió un "4" me lo quedo y lo guardo en "dados_guardados".
 guardados" tenga "generala", es decir, 5 números iguales.
 '''
 
+
 import random
 
 # --------------------------------
+
+
 # Dentro de esta sección copiar y crear
 # todas las funciones que utilice
 def resultado_tirada (cantidad_dados):
     resultado_tirada = []
-    if cantidad_dados == 1:
-        numero_1 = random.randrange(1, 6+1)
-        resultado_tirada.append(numero_1)
-
-    if cantidad_dados == 2:
-        numero_1 = random.randrange(1, 6+1)
-        numero_2 = random.randrange(1, 6+1)
-        resultado_tirada.append([numero_1, numero_2])
-        
-    if cantidad_dados == 3:
-        numero_1 = random.randrange(1, 6+1)
-        numero_2 = random.randrange(1, 6+1)
-        numero_3 = random.randrange(1, 6+1)
-        resultado_tirada.append([numero_1, numero_2, numero_3])
+    for i in range(cantidad_dados):
+      resultado_tirada.append(random.randrange(1, 6+1))
     
-    if cantidad_dados == 4:
-        numero_1 = random.randrange(1, 6+1)
-        numero_2 = random.randrange(1, 6+1)
-        numero_3 = random.randrange(1, 6+1)
-        numero_4 = random.randrange(1, 6+1)
-        resultado_tirada.append([numero_1, numero_2, numero_3, numero_4])
-
-    if cantidad_dados == 5:
-        numero_1 = random.randrange(1, 6+1)
-        numero_2 = random.randrange(1, 6+1)
-        numero_3 = random.randrange(1, 6+1)
-        numero_4 = random.randrange(1, 6+1)
-        numero_5 = random.randrange(1, 6+1)
-        resultado_tirada.append([numero_1, numero_2, numero_3, numero_4, numero_5])
     
     return resultado_tirada
 
 
-
+def repeticion_maxima (tirada):
+    num_mas_rep = max(tirada, key=tirada.count)
+    return num_mas_rep
 
 
 # --------------------------------
@@ -118,20 +97,51 @@ if __name__ == '__main__':
     # Leer el enunciado con atención y consultar cualquier duda
 
 
-    dados_guardados = []
+    dados_guardados = []   # <----------no lo usé al final
     cantidad_dados = 5
     tiradas = [None]
+    num_max = None
+    tiradas_totales = 0
 
-    while len(dados_guardados) < 5:
+    while cantidad_dados > 0:
 
         for tirada in tiradas:
-            tirada = resultado_tirada(cantidad_dados)
-        
-            print('resultado de la tirada:', tirada)
 
-        max_repeticiones = max(tirada, key = tirada.count)
-        
-        print('el número más repetido de la tirada es "{}"'.format(max_repeticiones))
+            if (num_max is None):
+                tirada = resultado_tirada(cantidad_dados)
+                print('resultado de la tirada:', tirada)
 
+                num_max = repeticion_maxima(tirada) 
+                print('el número más repetido de la tirada es "{}"'.format(num_max))
 
+                cantidad_rep = tirada.count(num_max)
+                print('se repite', cantidad_rep, 'veces')
 
+                cantidad_dados = cantidad_dados - cantidad_rep
+                print('quedan {} dados'.format(cantidad_dados))
+
+                            
+
+            else:
+                tirada = resultado_tirada(cantidad_dados)
+                print('resultado de la tirada:', tirada)
+                
+                cantidad_rep = tirada.count(num_max)
+                print(num_max, 'se repite', cantidad_rep, 'veces')
+
+                cantidad_dados = cantidad_dados - cantidad_rep
+                print('quedan {} dados'.format(cantidad_dados))
+
+            tiradas_totales += 1   
+            
+            if tiradas_totales == 3: 
+                cantidad_dados = 5
+    
+    print('¡Generala!') 
+      
+    print('tiros totales:', tiradas_totales)
+
+   
+            
+            
+                
